@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "647113493314",
+    "project_id": "hepsiburada-dgrubu",
+    "storage_bucket": "hepsiburada-dgrubu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647113493314:android:693f657d2ff8afb72356db",
+        "android_client_info": {
+          "package_name": "com.hepsiburada.dgrubuodev2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647113493314-ghjov0ptutbpknjpl3ufi0u8egbvdqpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAuTNJp9d82UQtj1p3zQuWzI7twrx38lA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647113493314-ghjov0ptutbpknjpl3ufi0u8egbvdqpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
