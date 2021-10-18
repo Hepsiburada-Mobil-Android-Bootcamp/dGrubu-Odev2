@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gauravk.bubblenavigation.BubbleNavigationConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/top_navigation_constraint"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_edittext"
+    android:elevation="@dimen/space_4"
+    android:padding="@dimen/space_12"
+    android:layout_margin="@dimen/space_4"
+    app:bnc_mode="spread">
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/item_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bt_active="true"
+        app:bt_icon="@drawable/ic_home"
+        app:bt_shape="@drawable/bg_bottom_item"
+        app:bt_title="@string/home" />
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/item_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bt_icon="@drawable/ic_profile"
+        app:bt_shape="@drawable/bg_bottom_item"
+        app:bt_title="@string/profile"
+        />
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/item_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bt_icon="@drawable/ic_cart"
+        app:bt_shape="@drawable/bg_bottom_item"
+        app:bt_title="@string/cart" />
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/item_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bt_icon="@drawable/ic_chat"
+        app:bt_shape="@drawable/bg_bottom_item"
+        app:bt_title="@string/chat" />
+
+    <!-- Add more child items here - max upto 5 -->
+
+</com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
