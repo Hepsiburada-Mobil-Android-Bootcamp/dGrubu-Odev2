@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="@dimen/space_20"
+    app:cardElevation="@dimen/space_0"
+    app:cardCornerRadius="@dimen/space_22">
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <ImageView
+           android:id="@+id/iv_restaurant_logo"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="@dimen/space_24"/>
+       <TextView
+           android:id="@+id/tv_restaurant_name"
+           android:textColor="@color/black_1"
+           android:textStyle="bold"
+           android:textSize="16sp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textAlignment="center" />
+       <TextView
+           android:id="@+id/tv_distance_time"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textAlignment="center"
+           android:textColor="@color/black_1"
+           android:textSize="12sp"
+           android:alpha="0.3"
+           android:layout_marginTop="@dimen/space_4"
+           android:layout_marginBottom="@dimen/space_24"/>
+   </LinearLayout>
+
+</androidx.cardview.widget.CardView>
