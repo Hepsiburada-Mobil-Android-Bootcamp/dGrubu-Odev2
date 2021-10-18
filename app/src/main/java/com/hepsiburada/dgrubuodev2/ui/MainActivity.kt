@@ -1,7 +1,8 @@
-package com.hepsiburada.dgrubuodev2
+package com.hepsiburada.dgrubuodev2.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.hepsiburada.dgrubuodev2.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
