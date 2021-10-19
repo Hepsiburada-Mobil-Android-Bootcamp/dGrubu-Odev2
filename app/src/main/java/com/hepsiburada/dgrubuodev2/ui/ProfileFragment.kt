@@ -6,20 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.hepsiburada.dgrubuodev2.R
-import com.hepsiburada.dgrubuodev2.databinding.FragmentDetailsBinding
+import com.hepsiburada.dgrubuodev2.databinding.FragmentProfileBinding
 
-class DetailsFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-    private lateinit var binding: FragmentDetailsBinding
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-        binding=DataBindingUtil.inflate(inflater,R.layout.fragment_details, container, false)
-        return binding.root
+    ): View? {
+        binding=DataBindingUtil.inflate(inflater,R.layout.fragment_profile,container,false)
+        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
 }
