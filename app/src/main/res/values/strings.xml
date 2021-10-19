@@ -20,4 +20,15 @@
     <string name="cart">Cart</string>
     <string name="chat">Chat</string>
     <string name="tamam">Tamam</string>
+    <string name="see_reviews"><u>See Reviews</u></string>
+    <string name="kcal">Kcal:</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="kcalValue">564</string>
+    <string name="reviewNumber">(30+)</string>
+    <string name="score">4.5</string>
+    <string name="foodName">Profiteroles</string>
+    <string name="foodIngredients">50g butter (preferably unsalted), cut into cubes 2 tbsp caster sugar 75g strong white flour, sifted with a pinch of fine sea salt 2 eggs, lightly beaten 300ml double cream few drops vanilla extract</string>
+    <string name="directions">Directions</string>
+    <string name="edit_recipe">Edit</string>
+    <string name="delete_recipe">Delete</string>
 </resources>
