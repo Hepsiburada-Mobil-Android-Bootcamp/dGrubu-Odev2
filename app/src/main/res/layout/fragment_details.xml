@@ -3,9 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="detailsFragment"
+            type="com.hepsiburada.dgrubuodev2.ui.DetailsFragment" />
+    </data>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -196,6 +205,7 @@
         android:layout_marginStart="48dp"
         android:backgroundTint="#4EE476"
         android:text="@string/edit_recipe"
+        android:onClick="@{()->detailsFragment.editOnClick()}"
         android:textColor="@color/white"
         app:cornerRadius="20dp"
         android:layout_marginTop="16dp"
@@ -211,6 +221,7 @@
         android:layout_height="50dp"
         android:layout_marginEnd="48dp"
         android:backgroundTint="#4EE476"
+        android:onClick="@{(view)->detailsFragment.deleteOnClick(view)}"
         android:text="@string/delete_recipe"
         android:textColor="@color/white"
         app:cornerRadius="20dp"
