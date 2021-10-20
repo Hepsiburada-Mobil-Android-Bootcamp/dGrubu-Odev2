@@ -62,7 +62,7 @@
 
         <include
             android:id="@+id/cardview"
-            layout="@layout/layout_cardview"
+            layout="@layout/food_card"
             android:layout_width="@dimen/space_0"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_20"
@@ -71,42 +71,19 @@
             app:layout_constraintTop_toBottomOf="@+id/et_search" />
 
         <TextView
-            android:id="@+id/tv_nearest"
-            android:text="@string/nearest_restaurant"
-            app:layout_constraintStart_toStartOf="@+id/cardview"
-            app:layout_constraintTop_toBottomOf="@+id/cardview"
-            style="@style/recyclerview_title"/>
-
-        <TextView
-            android:id="@+id/tv_view_more"
-            android:text="@string/view_more"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_nearest"
-            app:layout_constraintEnd_toEndOf="@+id/cardview"
-            app:layout_constraintTop_toBottomOf="@+id/cardview"
-            style="@style/view_more"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_nearest_restaurant"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/space_32"
-            android:layout_marginVertical="@dimen/space_20"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nearest" />
-
-        <TextView
             android:id="@+id/tv_popular_menu"
+            style="@style/recyclerview_title"
+            android:layout_marginTop="16dp"
             android:text="@string/popular_menu"
             app:layout_constraintStart_toStartOf="@+id/cardview"
-            app:layout_constraintTop_toBottomOf="@+id/rv_nearest_restaurant"
-            style="@style/recyclerview_title"/>
+            app:layout_constraintTop_toBottomOf="@+id/cardview" />
 
         <TextView
             android:id="@+id/tv_view_more_"
+            style="@style/view_more"
             android:text="@string/view_more"
             app:layout_constraintBottom_toBottomOf="@+id/tv_popular_menu"
-            app:layout_constraintEnd_toEndOf="@+id/cardview"
-            app:layout_constraintTop_toBottomOf="@+id/rv_nearest_restaurant"
-            style="@style/view_more"/>
+            app:layout_constraintEnd_toEndOf="@+id/cardview" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_popular_menu"
