@@ -31,6 +31,7 @@
     <string name="directions">Directions</string>
     <string name="edit_recipe">Edit</string>
     <string name="delete_recipe">Delete</string>
+    <string name="atla">Atla</string>
     <string name="kcal2">Kcal</string>
     <string name="score2">Score</string>
     <string name="food_name2">Food Name</string>
