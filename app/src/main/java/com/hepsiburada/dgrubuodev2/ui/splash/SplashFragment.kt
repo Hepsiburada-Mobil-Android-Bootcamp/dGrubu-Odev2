@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.hepsiburada.dgrubuodev2.R
-import com.hepsiburada.dgrubuodev2.SharedPrefHelper
+import com.hepsiburada.dgrubuodev2.utils.SharedPrefHelper
 import com.hepsiburada.dgrubuodev2.databinding.FragmentSplashBinding
 
 class SplashFragment : Fragment() {

@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.hepsiburada.dgrubuodev2.R
-import com.hepsiburada.dgrubuodev2.SharedPrefHelper
+import com.hepsiburada.dgrubuodev2.utils.SharedPrefHelper
 import com.hepsiburada.dgrubuodev2.databinding.FragmentOnboardingBinding
 import com.hepsiburada.dgrubuodev2.ui.adapter.ViewPagerFragmentAdapter
-import com.hepsiburada.dgrubuodev2.ui.splash.SplashVM
 import com.rd.animation.type.AnimationType
 
 class OnboardingFragment : Fragment() {

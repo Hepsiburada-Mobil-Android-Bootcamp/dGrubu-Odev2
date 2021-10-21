@@ -1,4 +1,4 @@
-package com.hepsiburada.dgrubuodev2
+package com.hepsiburada.dgrubuodev2.utils
 
 import android.content.Context
 import android.content.SharedPreferences

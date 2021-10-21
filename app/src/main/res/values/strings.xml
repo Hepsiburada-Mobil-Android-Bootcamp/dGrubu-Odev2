@@ -36,4 +36,9 @@
     <string name="score2">Score</string>
     <string name="food_name2">Food Name</string>
     <string name="save">Save</string>
+    <string name="username">username</string>
+    <string name="register">Register</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="don_t_have_an_account_register">Don’t have an account?<annotation font="">Register</annotation> </string>
 </resources>
