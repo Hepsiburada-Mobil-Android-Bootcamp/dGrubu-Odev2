@@ -180,7 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/sofiaprosemibold"
-        android:text="@string/directions"
+        android:text="@string/recipe"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/ingredientsDetailsTextView"
         app:layout_constraintTop_toBottomOf="@+id/ingredientsDetailsTextView" />

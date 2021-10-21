@@ -6,9 +6,8 @@ data class Foods(
     var foodName:String,
     var foodCategory:String,
     var foodCalory:Int,
-    var foodMaterial:String,
+    var foodIngredients:String,
     var foodRecipe:String,
-    var foodImg:String,
-    var foodPrice:Int
+    var foodImg:String
 ):Serializable {
 }
