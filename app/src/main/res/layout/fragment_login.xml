@@ -26,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_logo_text"
+                app:layout_constraintBottom_toTopOf="@+id/tv_account"
                 app:layout_constraintEnd_toEndOf="@+id/iv_logo"
                 app:layout_constraintStart_toStartOf="@+id/iv_logo"
                 app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
@@ -34,7 +35,7 @@
                 android:id="@+id/tv_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_60"
+                android:layout_marginTop="16dp"
                 android:text="@string/login_to_your_account"
                 android:textColor="@color/black_1"
                 android:textSize="20sp"
@@ -43,48 +44,94 @@
                 app:layout_constraintStart_toStartOf="@+id/iv_logo_text"
                 app:layout_constraintTop_toBottomOf="@+id/iv_logo_text" />
 
-            <EditText
-                android:id="@+id/et_email"
-                style="@style/edittext_login"
-                android:layout_marginHorizontal="@dimen/space_24"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="@dimen/space_40"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
-                android:hint="@string/email"
-                app:layout_constraintEnd_toEndOf="@+id/tv_account"
-                app:layout_constraintStart_toStartOf="@+id/tv_account"
-                app:layout_constraintTop_toBottomOf="@+id/tv_account" />
+                android:hint="@string/example_gmail_com"
+                app:errorEnabled="true"
+                app:layout_constraintBottom_toTopOf="@+id/text_input_layout_password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_account"
+                app:startIconDrawable="@drawable/ic_email">
 
-            <EditText
-                android:id="@+id/et_password"
-                style="@style/edittext_login"
-                android:layout_marginHorizontal="@dimen/space_24"
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/password"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_input_layout_phoneNumber"
+                    app:layout_constraintVertical_bias="0.04" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="@dimen/space_12"
                 android:layout_marginEnd="32dp"
                 android:hint="@string/password"
-                app:layout_constraintEnd_toEndOf="@+id/et_email"
-                app:layout_constraintStart_toStartOf="@+id/et_email"
-                app:layout_constraintTop_toBottomOf="@+id/et_email" />
+                app:errorEnabled="true"
+                app:layout_constraintBottom_toTopOf="@+id/text_input_layout_email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_email"
+                app:startIconDrawable="@drawable/ic_lock">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/againPassword"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_input_layout_email"
+                    app:layout_constraintVertical_bias="0.04" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/tv_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_20"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
                 android:text="@string/don_t_have_an_account_register"
                 android:textColor="@color/black_1"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:clickable="true"
-                app:layout_constraintEnd_toEndOf="@+id/et_password"
-                app:layout_constraintStart_toStartOf="@+id/et_password"
-                app:layout_constraintTop_toBottomOf="@+id/et_password" />
+                app:layout_constraintEnd_toEndOf="@+id/text_input_layout_password"
+                app:layout_constraintStart_toStartOf="@+id/text_input_layout_password"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_password" />
 
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_google"
                 style="@style/button_login"
+                android:layout_height="64dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
@@ -98,10 +145,10 @@
                 android:id="@+id/tv_forgot_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_20"
+                android:layout_marginTop="16dp"
                 android:text="@string/forgot_your_password"
-                android:textSize="16sp"
                 android:textColor="@color/green"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/btn_google"
                 app:layout_constraintStart_toStartOf="@+id/btn_google"
                 app:layout_constraintTop_toBottomOf="@+id/btn_google" />
@@ -110,8 +157,8 @@
                 android:id="@+id/btn_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_36"
-                android:layout_marginBottom="@dimen/space_60"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/bg_button_green"
                 android:text="@string/login"
                 android:textColor="@color/white"
