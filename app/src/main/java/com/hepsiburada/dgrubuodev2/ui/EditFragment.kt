@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import com.hepsiburada.dgrubuodev2.R
+import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.FragmentEditBinding
 import com.hepsiburada.dgrubuodev2.viewmodel.EditFragmentViewModel
 import java.util.jar.Manifest
@@ -30,6 +31,7 @@ class EditFragment : Fragment() {
     private lateinit var activityResultLauncher:ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
     var selectedPicture: Uri?=null
+    val uuid:String?=null
 
     val editViewModel: EditFragmentViewModel by viewModels()
 
@@ -40,13 +42,20 @@ class EditFragment : Fragment() {
 
         binding.editFragment=this
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_edit, container, false)
-
-        registerLauncher()
         return binding.root
     }
 
-    fun saveOnClick(){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        registerLauncher()
+        arguments?.let {
+            //uuid=DetailsFragmentArgs.fromBundle(it).foodId
+        }
+    }
 
+
+    fun saveOnClick(){
+        //editViewModel.editRecipe(Foods(uuid?,binding.editFoodNameTextField.text..))
     }
 
 
