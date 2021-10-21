@@ -18,7 +18,7 @@ class DetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
     val detailsViewModel: DetailsFragmentViewModel by viewModels()
-    val uuid:Int?=null
+    val uuid:String?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,18 +29,35 @@ class DetailsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        arguments?.let {
+           //uuid=DetailsFragmentArgs.fromBundle(it).foodId
+           // detailsViewModel.getRecipe(uuid)
+        }
+
+    }
+
+
+
+
+
+
     fun deleteOnClick(view: View){
         buildAlertDialog(uuid).show()
     }
 
     fun editOnClick(){
 
+        //navigate edit fragment with uuid as a argument
+
 
     }
 
 
 
-    fun buildAlertDialog(uuid:Int?):AlertDialog{
+    fun buildAlertDialog(uuid:String?):AlertDialog{
         val alertDialog: AlertDialog? = activity?.let {
             val builder = AlertDialog.Builder(it)
             builder.apply {
