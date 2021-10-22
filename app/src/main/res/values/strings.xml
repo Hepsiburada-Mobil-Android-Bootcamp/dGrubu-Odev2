@@ -46,4 +46,6 @@
     <string name="name">Name</string>
     <string name="update">Update</string>
     <string name="log_out">Log out</string>
+    <string name="Add">add</string>
+    <string name="food_category">Food Category</string>
 </resources>

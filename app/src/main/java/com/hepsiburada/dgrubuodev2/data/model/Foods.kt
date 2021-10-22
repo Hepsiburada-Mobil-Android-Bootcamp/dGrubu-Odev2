@@ -8,9 +8,10 @@ data class Foods(
     var foodCalory:Int,
     var foodIngredients:String,
     var foodRecipe:String,
+    var foodScore:Int,
     var foodImg:String?
 ):Serializable {
     constructor() : this("", "",
         "", 0, "",
-        "", "")
+        "",0, "")
 }

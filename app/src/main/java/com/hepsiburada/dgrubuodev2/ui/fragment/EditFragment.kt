@@ -1,4 +1,4 @@
-package com.hepsiburada.dgrubuodev2.ui
+package com.hepsiburada.dgrubuodev2.ui.fragment
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -16,14 +16,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import com.hepsiburada.dgrubuodev2.R
-import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.FragmentEditBinding
 import com.hepsiburada.dgrubuodev2.viewmodel.EditFragmentViewModel
-import java.util.jar.Manifest
 
 class EditFragment : Fragment() {
 

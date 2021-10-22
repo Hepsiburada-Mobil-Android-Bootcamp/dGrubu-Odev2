@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.hepsiburada.dgrubuodev2.ui.HomeFragment"
+        android:name="com.hepsiburada.dgrubuodev2.ui.fragment.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment2"
             app:destination="@id/profileFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_addFoodFragment"
+            app:destination="@id/addFoodFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -33,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment2"
-        android:name="com.hepsiburada.dgrubuodev2.ui.ProfileFragment"
+        android:name="com.hepsiburada.dgrubuodev2.ui.fragment.ProfileFragment"
         android:label="ProfileFragment" >
         <action
             android:id="@+id/action_profileFragment2_to_homeFragment"
@@ -41,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/editFragment"
-        android:name="com.hepsiburada.dgrubuodev2.ui.EditFragment"
+        android:name="com.hepsiburada.dgrubuodev2.ui.fragment.EditFragment"
         android:label="EditFragment" >
         <action
             android:id="@+id/action_editFragment_to_detailsFragment"
@@ -51,4 +54,8 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@+id/addFoodFragment"
+        android:name="com.hepsiburada.dgrubuodev2.ui.fragment.AddFoodFragment"
+        android:label="AddFoodFragment" />
 </navigation>

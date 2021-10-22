@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/SplashTheme">
         <activity
-            android:name=".ui.HomeActivity"/>
+            android:name=".ui.activity.HomeActivity"/>
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
