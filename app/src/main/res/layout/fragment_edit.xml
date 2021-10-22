@@ -53,6 +53,7 @@
                 android:id="@+id/editBackNavImageView"
                 android:layout_width="140dp"
                 android:layout_height="100dp"
+                android:onClick="@{()->editFragment.backNavOnClick()}"
                 android:layout_marginStart="-24dp"
                 android:src="@drawable/ic_backnavicon"
                 app:layout_constraintStart_toStartOf="parent"
