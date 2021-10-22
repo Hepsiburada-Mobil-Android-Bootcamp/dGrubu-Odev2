@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.FragmentDetailsBinding
+import com.hepsiburada.dgrubuodev2.ui.fragment.EditFragmentDirections
 import com.hepsiburada.dgrubuodev2.viewmodel.DetailsFragmentViewModel
 import com.hepsiburada.dgrubuodev2.viewmodel.EditFragmentViewModel
 import com.squareup.picasso.Picasso
@@ -54,6 +55,11 @@ class DetailsFragment : Fragment() {
             directionsDetailsTextView.text=currentFood.foodRecipe
         }
         Picasso.get().load(currentFood.foodImg).into(binding.foodImageView)
+    }
+
+    fun backNavOnClick(){
+        val action= DetailsFragmentDirections.actionDetailsFragmentToHomeFragment()
+        Navigation.findNavController(requireView()).navigate(action)
     }
 
 

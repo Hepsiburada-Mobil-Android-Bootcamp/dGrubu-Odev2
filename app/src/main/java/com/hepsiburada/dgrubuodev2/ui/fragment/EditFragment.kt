@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.databinding.FragmentEditBinding
@@ -59,6 +60,11 @@ class EditFragment : Fragment() {
             }
         }
 
+    }
+
+    fun backNavOnClick(){
+        val action=EditFragmentDirections.actionEditFragmentToDetailsFragment(uuid)
+        Navigation.findNavController(requireView()).navigate(action)
     }
 
 

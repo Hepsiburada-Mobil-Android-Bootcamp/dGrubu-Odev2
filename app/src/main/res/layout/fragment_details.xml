@@ -7,7 +7,7 @@
     <data>
         <variable
             name="detailsFragment"
-            type="com.hepsiburada.dgrubuodev2.ui.fragment.DetailsFragment" />
+            type="com.hepsiburada.dgrubuodev2.ui.DetailsFragment" />
     </data>
 
     <ScrollView
@@ -53,6 +53,7 @@
                 android:layout_height="100dp"
                 android:layout_marginStart="-24dp"
                 android:src="@drawable/ic_backnavicon"
+                android:onClick="@{detailsFragment.backNavOnClick()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
