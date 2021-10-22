@@ -1,6 +1,5 @@
 package com.hepsiburada.dgrubuodev2.viewmodel
 
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -15,13 +14,11 @@ class DetailsFragmentViewModel:ViewModel() {
         firestore= Firebase.firestore
     }
 
-
-
     fun deleteRecipe(uuid: String?) {
 
         uuid?.let {
 
-            firestore.collection("recipes").document(uuid)
+            firestore.collection("foods").document(uuid)
                 .delete()
                 .addOnSuccessListener { result ->
 
@@ -34,27 +31,23 @@ class DetailsFragmentViewModel:ViewModel() {
 
     }
 
-    fun getRecipe(uuid: String?):Foods{
+    fun getRecipe(uuid: String?):Foods?{
 
-        lateinit var doc:Foods
+        var doc:Foods?=null
 
         uuid?.let {
 
-        firestore.collection("recipes").document(uuid)
-            .get()
-            .addOnSuccessListener { result ->
-                val doc=result.toObject(Foods::class.java)
-            }
-            .addOnFailureListener { exception ->
+            firestore.collection("foods").document(uuid)
+                .get()
+                .addOnSuccessListener { result ->
+                    doc=result.toObject(Foods::class.java)
+                }
+                .addOnFailureListener { exception ->
 
-            }
+                }
 
         }
-
-
         return doc
     }
-
-
 
 }

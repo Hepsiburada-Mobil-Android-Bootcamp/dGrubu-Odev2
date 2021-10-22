@@ -10,4 +10,7 @@ data class Foods(
     var foodRecipe:String,
     var foodImg:String
 ):Serializable {
+    constructor() : this("", "",
+        "", 0, "",
+        "", "")
 }
