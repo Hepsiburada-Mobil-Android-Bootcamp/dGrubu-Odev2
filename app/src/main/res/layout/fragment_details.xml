@@ -7,7 +7,7 @@
     <data>
         <variable
             name="detailsFragment"
-            type="com.hepsiburada.dgrubuodev2.ui.fragment.DetailsFragment" />
+            type="com.hepsiburada.dgrubuodev2.ui.DetailsFragment" />
     </data>
 
     <ScrollView
