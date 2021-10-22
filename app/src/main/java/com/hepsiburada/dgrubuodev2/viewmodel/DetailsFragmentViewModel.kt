@@ -1,17 +1,24 @@
 package com.hepsiburada.dgrubuodev2.viewmodel
 
+
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import com.hepsiburada.dgrubuodev2.data.model.Foods
+
 
 class DetailsFragmentViewModel:ViewModel() {
 
     private val firestore:FirebaseFirestore
+    private val storage:FirebaseStorage
+
 
     init {
         firestore= Firebase.firestore
+        storage= Firebase.storage
     }
 
     fun deleteRecipe(uuid: String?) {
@@ -26,9 +33,7 @@ class DetailsFragmentViewModel:ViewModel() {
                 .addOnFailureListener { exception ->
 
                 }
-
         }
-
     }
 
     fun getRecipe(uuid: String?):Foods?{
@@ -49,5 +54,7 @@ class DetailsFragmentViewModel:ViewModel() {
         }
         return doc
     }
+
+
 
 }
