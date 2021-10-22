@@ -10,6 +10,10 @@
             type="com.hepsiburada.dgrubuodev2.ui.DetailsFragment" />
     </data>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -180,7 +184,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/sofiaprosemibold"
-        android:text="@string/directions"
+        android:text="@string/recipe"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/ingredientsDetailsTextView"
         app:layout_constraintTop_toBottomOf="@+id/ingredientsDetailsTextView" />
@@ -232,4 +236,5 @@
         app:strokeColor="#34A853" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

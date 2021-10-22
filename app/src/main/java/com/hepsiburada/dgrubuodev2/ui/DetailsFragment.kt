@@ -9,16 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.hepsiburada.dgrubuodev2.R
+import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.FragmentDetailsBinding
 import com.hepsiburada.dgrubuodev2.viewmodel.DetailsFragmentViewModel
 import com.hepsiburada.dgrubuodev2.viewmodel.EditFragmentViewModel
+import com.squareup.picasso.Picasso
 
 class DetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
     val detailsViewModel: DetailsFragmentViewModel by viewModels()
-    val uuid:String?=null
+    var uuid:String?=null
+    lateinit var currentFood: Foods
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,14 +38,23 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
-           //uuid=DetailsFragmentArgs.fromBundle(it).foodId
-           // detailsViewModel.getRecipe(uuid)
+           uuid=DetailsFragmentArgs.fromBundle(it).uuid
+           currentFood= detailsViewModel.getRecipe(uuid)!!
+            setViews(currentFood)
         }
 
     }
 
 
-
+    private fun setViews(currentFood: Foods){
+        binding.apply {
+            foodNameTextView.text=currentFood.foodName
+            kcalValueTextView.text=currentFood.foodCalory.toString()
+            ingredientsDetailsTextView.text=currentFood.foodIngredients
+            directionsDetailsTextView.text=currentFood.foodRecipe
+        }
+        Picasso.get().load(currentFood.foodImg).into(binding.foodImageView)
+    }
 
 
 
@@ -49,10 +63,8 @@ class DetailsFragment : Fragment() {
     }
 
     fun editOnClick(){
-
-        //navigate edit fragment with uuid as a argument
-
-
+        val action=DetailsFragmentDirections.actionDetailsFragmentToEditFragment(uuid)
+        Navigation.findNavController(requireView()).navigate(action)
     }
 
 
