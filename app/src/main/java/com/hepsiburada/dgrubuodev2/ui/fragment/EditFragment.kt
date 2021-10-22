@@ -52,7 +52,13 @@ class EditFragment : Fragment() {
 
 
     fun saveOnClick(){
-        //editViewModel.editRecipe(Foods(uuid?,binding.editFoodNameTextField.text..))
+        val downloadUrl=editViewModel.uploadPicture(selectedPicture,uuid)
+        downloadUrl?.let {
+            binding.apply {
+                //editViewModel.editRecipe(Foods("id",editFoodNameTextField.text.toString(),editCategoryNameTextfield.text.toString(),editCalorieTextField.text.toString().toInt(),editIngredientsTextField.text.toString(),editDirectionsTextField.text.toString(),downloadUrl),uuid)
+            }
+        }
+
     }
 
 
