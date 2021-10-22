@@ -14,8 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.databinding.FragmentLoginBinding
-import com.hepsiburada.dgrubuodev2.ui.HomeActivity
-import com.hepsiburada.dgrubuodev2.utils.ValidationUtil
+import com.hepsiburada.dgrubuodev2.ui.activity.HomeActivity
 import com.hepsiburada.dgrubuodev2.viewmodel.LoginViewModel
 
 class LoginFragment : Fragment() {

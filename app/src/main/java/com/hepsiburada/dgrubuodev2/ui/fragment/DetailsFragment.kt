@@ -1,7 +1,6 @@
-package com.hepsiburada.dgrubuodev2.ui
+package com.hepsiburada.dgrubuodev2.ui.fragment
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,7 +11,6 @@ import androidx.fragment.app.viewModels
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.databinding.FragmentDetailsBinding
 import com.hepsiburada.dgrubuodev2.viewmodel.DetailsFragmentViewModel
-import com.hepsiburada.dgrubuodev2.viewmodel.EditFragmentViewModel
 
 class DetailsFragment : Fragment() {
 

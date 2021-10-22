@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.databinding.FragmentRegisterBinding
-import com.hepsiburada.dgrubuodev2.ui.HomeActivity
+import com.hepsiburada.dgrubuodev2.ui.activity.HomeActivity
 import com.hepsiburada.dgrubuodev2.utils.ValidationUtil
 import com.hepsiburada.dgrubuodev2.viewmodel.RegisterViewModel
 

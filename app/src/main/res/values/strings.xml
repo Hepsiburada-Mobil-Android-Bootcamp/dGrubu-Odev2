@@ -42,4 +42,6 @@
     <string name="example_gmail_com">example@gmail.com</string>
     <string name="don_t_have_an_account_register">Don’t have an account?<annotation font="">Register</annotation> </string>
     <string name="recipe">Recipe</string>
+    <string name="Add">add</string>
+    <string name="food_category">Food Category</string>
 </resources>

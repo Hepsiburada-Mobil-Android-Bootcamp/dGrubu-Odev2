@@ -1,4 +1,4 @@
-package com.hepsiburada.dgrubuodev2.ui
+package com.hepsiburada.dgrubuodev2.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
