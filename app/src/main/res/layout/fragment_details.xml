@@ -10,6 +10,10 @@
             type="com.hepsiburada.dgrubuodev2.ui.DetailsFragment" />
     </data>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -232,4 +236,5 @@
         app:strokeColor="#34A853" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
