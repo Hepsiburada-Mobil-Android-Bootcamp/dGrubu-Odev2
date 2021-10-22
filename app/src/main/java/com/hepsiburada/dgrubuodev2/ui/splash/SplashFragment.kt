@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.utils.SharedPrefHelper
 import com.hepsiburada.dgrubuodev2.databinding.FragmentSplashBinding
-import com.hepsiburada.dgrubuodev2.ui.HomeActivity
+import com.hepsiburada.dgrubuodev2.ui.activity.HomeActivity
 
 class SplashFragment : Fragment() {
 
