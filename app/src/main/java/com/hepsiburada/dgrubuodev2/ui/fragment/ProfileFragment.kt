@@ -1,41 +1,48 @@
 package com.hepsiburada.dgrubuodev2.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
-import com.hepsiburada.dgrubuodev2.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.hepsiburada.dgrubuodev2.databinding.FragmentProfileBinding
-import com.hepsiburada.dgrubuodev2.databinding.FragmentSplashBinding
+import com.hepsiburada.dgrubuodev2.viewmodel.ProfileFragmentViewModel
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
+    private var viewModel: ProfileFragmentViewModel? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this).get(ProfileFragmentViewModel::class.java)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClickListener()
+        setPersonalInfo()
     }
 
     private fun initClickListener() {
         binding.btnUpdate.setOnClickListener {
-            //Todo Gerekli validasyonlardan sonra bilgiler güncellenecek
+            val name = binding.etName.text.toString()
+            val email = binding.etEmail.text.toString()
+            viewModel?.updateProfile(
+                name,
+                email
+            )
         }
 
         binding.tvLogout.setOnClickListener {
-            //TODO Logout işlemi yapılacak
+            viewModel?.logOut()
         }
 
         binding.ivNamePen.setOnClickListener {
@@ -53,5 +60,14 @@ class ProfileFragment : Fragment() {
         binding.profileImage.setOnClickListener {
             //Todo galeriden fotoğraf seçme işlemleri
         }
+    }
+
+    private fun setPersonalInfo() {
+        viewModel?.username?.observe(viewLifecycleOwner, {
+            binding.etName.setText(it)
+        })
+        viewModel?.email?.observe(viewLifecycleOwner, {
+            binding.etEmail.setText(it)
+        })
     }
 }

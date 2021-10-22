@@ -12,8 +12,6 @@ import androidx.navigation.Navigation
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.FragmentDetailsBinding
-import com.hepsiburada.dgrubuodev2.ui.DetailsFragmentArgs
-import com.hepsiburada.dgrubuodev2.ui.DetailsFragmentDirections
 import com.hepsiburada.dgrubuodev2.viewmodel.DetailsFragmentViewModel
 import com.squareup.picasso.Picasso
 
