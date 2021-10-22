@@ -20,7 +20,7 @@ class EditFragmentViewModel:ViewModel() {
 
         uuid?.let {
 
-            firestore.collection("recipes").document(uuid)
+            firestore.collection("foods").document(uuid)
                 .set(recipe)
                 .addOnSuccessListener { result ->
 
