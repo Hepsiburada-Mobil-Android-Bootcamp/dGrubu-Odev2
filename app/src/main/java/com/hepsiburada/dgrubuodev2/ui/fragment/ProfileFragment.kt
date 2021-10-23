@@ -28,6 +28,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClickListener()
+        setEditable()
         setPersonalInfo()
     }
 
@@ -45,18 +46,6 @@ class ProfileFragment : Fragment() {
             viewModel?.logOut()
         }
 
-        binding.ivNamePen.setOnClickListener {
-            binding.etName.isEnabled = !binding.etName.isEnabled
-        }
-
-        binding.ivEmailPen.setOnClickListener {
-            binding.ivEmailPen.isEnabled = !binding.ivEmailPen.isEnabled
-        }
-
-        binding.ivPasswordPen.setOnClickListener {
-            binding.ivPasswordPen.isEnabled = !binding.ivPasswordPen.isEnabled
-        }
-
         binding.profileImage.setOnClickListener {
             //Todo galeriden fotoğraf seçme işlemleri
         }
@@ -69,5 +58,15 @@ class ProfileFragment : Fragment() {
         viewModel?.email?.observe(viewLifecycleOwner, {
             binding.etEmail.setText(it)
         })
+    }
+
+    private fun setEditable(){
+        binding.ivNamePen.setOnClickListener {
+            binding.etName.isEnabled = !binding.etName.isEnabled
+        }
+
+        binding.ivEmailPen.setOnClickListener {
+            binding.etEmail.isEnabled = !binding.etEmail.isEnabled
+        }
     }
 }
