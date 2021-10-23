@@ -1,6 +1,8 @@
 package com.hepsiburada.dgrubuodev2.ui.fragment
 
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.databinding.FragmentProfileBinding
+import com.hepsiburada.dgrubuodev2.utils.PictureSelectionUtil
 import com.hepsiburada.dgrubuodev2.utils.ValidationUtil
 import com.hepsiburada.dgrubuodev2.viewmodel.ProfileFragmentViewModel
+import com.squareup.picasso.Picasso
 
 class ProfileFragment : Fragment() {
 
@@ -20,6 +24,9 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var viewModel: ProfileFragmentViewModel? = null
+
+    private val uuid: String? = null
+    private var downloadUrl: String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,12 +44,21 @@ class ProfileFragment : Fragment() {
         showWarning()
         initClickListener()
         setEditable()
+        PictureSelectionUtil.setActivityResultLauncher(this@ProfileFragment, binding.profileImage)
+        PictureSelectionUtil.setPermissionLauncher(this@ProfileFragment)
     }
 
     private fun initClickListener() {
         binding.btnUpdate.setOnClickListener {
             if (!isError()) {
-                viewModel?.updateProfile()
+                PictureSelectionUtil.selectedPicture?.let {
+                    downloadUrl = PictureSelectionUtil.uploadPicture(
+                        "profileImg",
+                        PictureSelectionUtil.selectedPicture,
+                        uuid
+                    ).toString()
+                }
+                downloadUrl?.let { url -> viewModel?.updateProfile(url) }
             }
         }
 
@@ -53,7 +69,7 @@ class ProfileFragment : Fragment() {
         }
 
         binding.profileImage.setOnClickListener {
-            //Todo galeriden fotoğraf seçme işlemleri
+            view?.let { img -> PictureSelectionUtil.pictureSelection(img, this@ProfileFragment) }
         }
     }
 
@@ -121,6 +137,9 @@ class ProfileFragment : Fragment() {
         })
         viewModel?.email?.observe(viewLifecycleOwner, {
             binding.etEmail.setText(it)
+        })
+        viewModel?.profileImage?.observe(viewLifecycleOwner, {
+            Picasso.get().load(viewModel!!.profileImage.toString()).into(binding.profileImage)
         })
     }
 
