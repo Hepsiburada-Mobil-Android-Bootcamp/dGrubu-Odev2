@@ -3,10 +3,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_favorite_food_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_32"
+        android:layout_marginTop="@dimen/space_60"
+        android:text="@string/find_your_favorite_food"
+        android:textColor="@color/black_1"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_28"
+        android:background="@drawable/ic_notification"
+        app:layout_constraintStart_toEndOf="@+id/tv_favorite_food_text"
+        app:layout_constraintTop_toTopOf="@+id/tv_favorite_food_text" />
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="@dimen/space_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_18"
+        android:layout_marginEnd="@dimen/space_8"
+        android:background="@drawable/ic_search_bg"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/space_18"
+        android:hint="@string/what_do_you_want_to_order"
+        android:padding="@dimen/space_12"
+        android:textColorHint="@color/orange_1"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/ib_filter"
+        app:layout_constraintStart_toStartOf="@+id/tv_favorite_food_text"
+        app:layout_constraintTop_toBottomOf="@+id/tv_favorite_food_text" />
+
+    <ImageButton
+        android:id="@+id/ib_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_24"
+        android:background="@drawable/ic_filter"
+        app:layout_constraintBottom_toBottomOf="@+id/et_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_search" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -18,16 +74,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/fab_plus" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

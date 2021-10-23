@@ -1,265 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragment.AddFoodFragment">
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/editCardView"
-        android:layout_width="360dp"
-        android:layout_height="220dp"
-        app:cardCornerRadius="28dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            tools:context=".ui.fragment.AddFoodFragment">
 
-            <ImageView
-                android:id="@+id/editFoodImageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:cropToPadding="false"
-                android:scaleType="fitXY"
-                android:src="@drawable/profiterol"
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="#4EE476"
+                android:text="@string/Add"
+                android:textColor="@color/white"
+                app:cornerRadius="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/foodDirectionsTextLayout"
+                app:strokeColor="#34A853" />
 
-            <ImageView
-                android:id="@+id/editBackNavImageView"
-                android:layout_width="140dp"
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/editCardView"
+                android:layout_width="360dp"
+                android:layout_height="220dp"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/editFoodImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:cropToPadding="false"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/profiterol"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/editBackNavImageView"
+                        android:layout_width="140dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="-24dp"
+                        android:src="@drawable/ic_backnavicon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/editChangePictureImageView"
+                        android:layout_width="200dp"
+                        android:layout_height="120dp"
+                        android:src="@android:drawable/ic_menu_camera"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/editFoodImageView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/editFoodImageView" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/foodCategoryTextLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="2dp"
+                app:errorEnabled="true"
+                app:hintTextColor="#4EE476"
+                app:layout_constraintEnd_toEndOf="@+id/foodNameTextLayout"
+                app:layout_constraintStart_toStartOf="@+id/foodNameTextLayout"
+                app:layout_constraintTop_toBottomOf="@+id/foodNameTextLayout"
+                app:startIconDrawable="@drawable/ic_nameicon"
+                app:startIconTint="#4EE476">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addfoodCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/sofiaprosemibold"
+                    android:hint="@string/food_category"
+                    android:inputType="text"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/foodScoreTextLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="2dp"
+                app:errorEnabled="true"
+                app:hintTextColor="#4EE476"
+                app:layout_constraintEnd_toStartOf="@+id/foodCalorieTextLayout"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/foodCategoryTextLayout"
+                app:layout_constraintTop_toBottomOf="@+id/foodCategoryTextLayout"
+                app:startIconDrawable="@drawable/ic_time"
+                app:startIconTint="#4EE476">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addfoodCookingTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/sofiaprosemibold"
+                    android:hint="@string/cookingtime"
+                    android:inputType="number"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/foodCalorieTextLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:boxStrokeWidth="2dp"
+                app:errorEnabled="true"
+                app:hintTextColor="#4EE476"
+                app:layout_constraintEnd_toEndOf="@+id/foodCategoryTextLayout"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/foodScoreTextLayout"
+                app:layout_constraintTop_toBottomOf="@+id/foodCategoryTextLayout"
+                app:startIconDrawable="@drawable/ic_energyicon"
+                app:startIconTint="#4EE476">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addfoodCalorie"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/sofiaprosemibold"
+                    android:hint="@string/kcal2"
+                    android:inputType="number"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/foodIngredientsTextLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="-24dp"
-                android:src="@drawable/ic_backnavicon"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginTop="16dp"
+                android:scrollbars="vertical"
+                app:boxStrokeWidth="2dp"
+                app:errorEnabled="true"
+                app:hintTextColor="#4EE476"
+                app:layout_constraintEnd_toEndOf="@+id/foodCategoryTextLayout"
+                app:layout_constraintStart_toStartOf="@+id/foodCategoryTextLayout"
+                app:layout_constraintTop_toBottomOf="@+id/foodScoreTextLayout"
+                app:startIconDrawable="@drawable/ic_ingredienticon"
+                app:startIconTint="#4EE476">
 
-            <ImageView
-                android:id="@+id/editChangePictureImageView"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
-                android:src="@android:drawable/ic_menu_camera"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/editFoodImageView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/editFoodImageView" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addfoodIngredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:inputType="textMultiLine|text|textImeMultiLine"
+                    android:fontFamily="@font/sofiaprosemibold"
+                    android:hint="@string/ingredients"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/foodDirectionsTextLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:scrollbars="vertical"
+                app:boxStrokeWidth="2dp"
+                app:errorEnabled="true"
+                app:hintTextColor="#4EE476"
+                app:layout_constraintEnd_toEndOf="@+id/foodIngredientsTextLayout"
+                app:layout_constraintHorizontal_bias="0.509"
+                app:layout_constraintStart_toStartOf="@+id/foodIngredientsTextLayout"
+                app:layout_constraintTop_toBottomOf="@+id/foodIngredientsTextLayout"
+                app:startIconDrawable="@drawable/ic_directionicon"
+                app:startIconTint="#4EE476">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addfoodRecipe"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:inputType="textMultiLine|text|textImeMultiLine"
+                    android:fontFamily="@font/sofiaprosemibold"
+                    android:hint="@string/recipe"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/foodNameTextLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                app:boxStrokeWidth="2dp"
+                app:errorEnabled="true"
+                app:hintTextColor="#4EE476"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editCardView"
+                app:startIconDrawable="@drawable/ic_nameicon"
+                app:startIconTint="#4EE476">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addfoodName"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/sofiaprosemibold"
+                    android:hint="@string/food_name2"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editAddFoodNameTextLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="16dp"
-        app:boxStrokeWidth="2dp"
-        app:errorEnabled="true"
-        app:hintTextColor="#4EE476"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCardView"
-        app:startIconDrawable="@drawable/ic_nameicon"
-        app:startIconTint="#4EE476">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editAddFoodNameTextField"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            android:fontFamily="@font/sofiaprosemibold"
-            android:hint="@string/food_name2"
-            android:inputType="text"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editAddFoodCategoryTextLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="25dp"
-        app:errorEnabled="true"
-        app:boxStrokeWidth="2dp"
-        app:hintTextColor="#4EE476"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCardView"
-        app:startIconDrawable="@drawable/ic_nameicon"
-        app:startIconTint="#4EE476">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editAddFoodCategoryTextField"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            android:fontFamily="@font/sofiaprosemibold"
-            android:hint="@string/food_category"
-            android:inputType="text"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editAddScoreTextLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="16dp"
-        app:boxStrokeWidth="2dp"
-        app:hintTextColor="#4EE476"
-        app:errorEnabled="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAddFoodNameTextLayout"
-        app:startIconDrawable="@drawable/ic_staricon"
-        app:startIconTint="#4EE476">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editAddFoodScoreTextField"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            android:fontFamily="@font/sofiaprosemibold"
-            android:hint="@string/score2"
-            android:inputType="text"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editAddFoodCalorieTextLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="25dp"
-        app:boxStrokeWidth="2dp"
-        app:errorEnabled="true"
-        app:hintTextColor="#4EE476"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAddFoodNameTextLayout"
-        app:startIconDrawable="@drawable/ic_energyicon"
-        app:startIconTint="#4EE476">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editAddFoodCalorieTextField"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            android:fontFamily="@font/sofiaprosemibold"
-            android:hint="@string/kcal2"
-            android:inputType="text"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editAddFoodIngredientsTextLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="360dp"
-        android:scrollbars="vertical"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        app:errorEnabled="true"
-        app:boxStrokeWidth="2dp"
-        app:hintTextColor="#4EE476"
-        app:startIconDrawable="@drawable/ic_ingredienticon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAddScoreTextLayout"
-        app:startIconTint="#4EE476">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editAddFoodIngredientsTextField"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:fontFamily="@font/sofiaprosemibold"
-            android:hint="@string/ingredients"
-            android:inputType="text"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editAddFoodDirectionsTextLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="360dp"
-        android:layout_height="100dp"
-        android:scrollbars="vertical"
-        app:boxStrokeWidth="2dp"
-        app:hintTextColor="#4EE476"
-        app:errorEnabled="true"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAddFoodIngredientsTextLayout"
-        app:startIconDrawable="@drawable/ic_directionicon"
-        app:startIconTint="#4EE476">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editAddFoodDirectionsTextField"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:fontFamily="@font/sofiaprosemibold"
-            android:hint="@string/recipe"
-            android:inputType="text"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/addButton"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#4EE476"
-        android:text="@string/Add"
-        android:textColor="@color/white"
-        app:cornerRadius="40dp"
-        app:icon="@drawable/ic_saveicon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAddFoodDirectionsTextLayout"
-        app:strokeColor="#34A853" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 </layout>

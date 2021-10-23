@@ -91,19 +91,19 @@ class RegisterFragment : Fragment() {
             var hasError = false
             when {
                 binding.username.error.isNullOrEmpty() && viewModel?.username?.value.isNullOrEmpty() -> {
-                    binding.username.error = "Username is not empty"
+                   ValidationUtil.validateTextField(binding.username)
                     hasError = true
                 }
                 binding.email.error.isNullOrEmpty() && viewModel?.email?.value.isNullOrEmpty() -> {
-                    binding.email.error = "Email is not empty"
+                    ValidationUtil.validateTextField(binding.email)
                     hasError = true
                 }
                 binding.password.error.isNullOrEmpty() && viewModel?.password?.value.isNullOrEmpty() -> {
-                    binding.password.error = "Password is not empty"
+                    ValidationUtil.validateTextField(binding.password)
                     hasError = true
                 }
                 binding.confirmPassword.error.isNullOrEmpty() && viewModel?.confirmPassword?.value.isNullOrEmpty() -> {
-                    binding.confirmPassword.error = "Re enter password"
+                    ValidationUtil.validateTextField(binding.confirmPassword)
                     hasError = true
                 }
 

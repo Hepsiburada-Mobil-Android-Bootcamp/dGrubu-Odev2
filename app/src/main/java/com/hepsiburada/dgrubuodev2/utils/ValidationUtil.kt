@@ -1,5 +1,7 @@
 package com.hepsiburada.dgrubuodev2.utils
 
+import android.text.Editable
+import android.widget.EditText
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -36,7 +38,9 @@ object ValidationUtil {
                         && input.matches("(.*[0-9].*)".toRegex())
         )
             result = true
-
         return result
+    }
+    fun validateTextField(s: EditText){
+        s.error = "This field is required"
     }
 }
