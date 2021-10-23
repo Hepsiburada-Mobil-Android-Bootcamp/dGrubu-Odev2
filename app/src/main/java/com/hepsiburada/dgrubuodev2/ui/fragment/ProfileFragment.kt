@@ -18,6 +18,7 @@ import com.hepsiburada.dgrubuodev2.utils.PictureSelectionUtil
 import com.hepsiburada.dgrubuodev2.utils.ValidationUtil
 import com.hepsiburada.dgrubuodev2.viewmodel.ProfileFragmentViewModel
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.*
 
 class ProfileFragment : Fragment() {
 
@@ -52,16 +53,22 @@ class ProfileFragment : Fragment() {
     private fun initClickListener() {
         binding.btnUpdate.setOnClickListener {
             if (!isError()) {
-                PictureSelectionUtil.selectedPicture?.let {
-                    downloadUrl = PictureSelectionUtil.uploadPicture(
-                        "profileImg",
-                        PictureSelectionUtil.selectedPicture,
-                        binding.etName.text.toString()
-                    )
-                }
 
-                downloadUrl?.let { url -> viewModel?.updateProfile(url) }
+                CoroutineScope(Dispatchers.IO).async {
+
+                    PictureSelectionUtil.selectedPicture?.let {
+                        downloadUrl = PictureSelectionUtil.uploadPicture(
+                            "profileImg",
+                            PictureSelectionUtil.selectedPicture,
+                            binding.etName.text.toString()
+                        )
+                    }
+
+                    downloadUrl?.let { url -> viewModel?.updateProfile(url) }
+                }
             }
+
+
         }
 
         binding.tvLogout.setOnClickListener {

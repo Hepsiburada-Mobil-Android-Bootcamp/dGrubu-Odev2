@@ -21,6 +21,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
+import kotlinx.coroutines.*
 
 object PictureSelectionUtil {
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
@@ -81,24 +82,26 @@ object PictureSelectionUtil {
     }
 
 
-    fun uploadPicture(path:String,imgUri:Uri?,fileName:String?):String?{
+     suspend fun uploadPicture(path:String,imgUri:Uri?,fileName:String?):String?= withContext(Dispatchers.IO){
 
         val reference=storage.reference
         val imgReference=reference.child(path).child(fileName+".jpg")
 
-        imgUri?.let {
-            val storageReference= storage.reference.child(path).child(fileName+".jpg")
-            storageReference.putFile(imgUri).addOnSuccessListener {
-                imgReference.downloadUrl.addOnSuccessListener {
-                    downloadUrl=it.toString()
-                    //Log.e("7777777777",downloadUrl!!)
-                }
-            }
+         imgUri?.let {
 
-        }
-        Log.e("7777777777",downloadUrl!!)
-        return downloadUrl
-    }
+             val storageReference = storage.reference.child(path).child(fileName + ".jpg")
+             storageReference.putFile(imgUri).addOnSuccessListener {
+                     imgReference.downloadUrl.addOnSuccessListener {
+                         downloadUrl = it.toString()
+                         //Log.e("7777777777",downloadUrl!!)
+                     }
+                 }
+
+             }
+
+             Log.e("7777777777", downloadUrl!!)
+         return@withContext downloadUrl
+         }
 
 
 
