@@ -21,15 +21,16 @@ import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.databinding.FragmentEditBinding
+import com.hepsiburada.dgrubuodev2.utils.PictureSelectionUtil
 import com.hepsiburada.dgrubuodev2.viewmodel.EditFragmentViewModel
 
 class EditFragment : Fragment() {
 
-    private lateinit var binding:FragmentEditBinding
+    lateinit var binding:FragmentEditBinding
     private lateinit var activityResultLauncher:ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
-    var selectedPicture: Uri?=null
     val uuid:String?=null
+
 
     val editViewModel: EditFragmentViewModel by viewModels()
 
@@ -45,7 +46,10 @@ class EditFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        registerLauncher()
+
+        PictureSelectionUtil.setActivityResultLauncher(this@EditFragment,binding.editFoodImageView)
+        PictureSelectionUtil.setPermissionLauncher(this@EditFragment)
+
         arguments?.let {
             //uuid=DetailsFragmentArgs.fromBundle(it).foodId
         }
@@ -53,10 +57,12 @@ class EditFragment : Fragment() {
 
 
     fun saveOnClick(){
-        val downloadUrl=editViewModel.uploadPicture(selectedPicture,uuid)
-        downloadUrl?.let {
-            binding.apply {
-                //editViewModel.editRecipe(Foods("id",editFoodNameTextField.text.toString(),editCategoryNameTextfield.text.toString(),editCalorieTextField.text.toString().toInt(),editIngredientsTextField.text.toString(),editDirectionsTextField.text.toString(),downloadUrl),uuid)
+        PictureSelectionUtil.selectedPicture?.let {
+            val downloadUrl=PictureSelectionUtil.uploadPicture("foodImg",PictureSelectionUtil.selectedPicture,uuid)
+            downloadUrl?.let {
+                binding.apply {
+                    //editViewModel.editRecipe(Foods("id",editFoodNameTextField.text.toString(),editCategoryNameTextfield.text.toString(),editCalorieTextField.text.toString().toInt(),editIngredientsTextField.text.toString(),editDirectionsTextField.text.toString(),downloadUrl),uuid)
+                }
             }
         }
 
@@ -67,51 +73,9 @@ class EditFragment : Fragment() {
         Navigation.findNavController(requireView()).navigate(action)
     }
 
-
     fun selectPictureOnClick(view:View){
-
-        if(ContextCompat.checkSelfPermission(this.requireContext(),android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this.requireActivity(),android.Manifest.permission.READ_EXTERNAL_STORAGE)){
-                Snackbar.make(view,"Permission needed for gallery!", Snackbar.LENGTH_INDEFINITE).setAction("Give Permission"){
-                    permissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                }.show()
-
-            }
-            else{
-                permissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-
-            }
-        }else{
-            val galleryIntent= Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            activityResultLauncher.launch(galleryIntent)
-        }
-
+        PictureSelectionUtil.pictureSelection(view,this@EditFragment)
     }
-
-    private fun registerLauncher(){
-        activityResultLauncher=registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            if(it.resultCode==RESULT_OK){
-                val result=it.data
-                result?.let {
-                    selectedPicture=result.data
-                    selectedPicture?.let {
-                        binding.editFoodImageView.setImageURI(selectedPicture)
-                    }
-                }
-            }
-        }
-        permissionLauncher=registerForActivityResult(ActivityResultContracts.RequestPermission()){
-            if(it){
-                val galleryIntent=Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                activityResultLauncher.launch(galleryIntent)
-            }
-            else{
-                Toast.makeText(this.requireActivity(),"Permission needed!",Toast.LENGTH_LONG).show()
-            }
-        }
-
-    }
-
 
 
 
