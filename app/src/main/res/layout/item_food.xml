@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/food_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/foodImage"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toTopOf="@+id/foodNameText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/burger" />
+
+                <TextView
+                    android:id="@+id/foodNameText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/foodImage"
+                    tools:text="Food Name" />
+
+                <TextView
+                    android:id="@+id/text_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="min"
+                    app:layout_constraintEnd_toStartOf="@+id/foodCalorieText"
+                    app:layout_constraintTop_toBottomOf="@+id/foodNameText" />
+
+                <TextView
+                    android:id="@+id/foodCalorieText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_min"
+                    app:layout_constraintEnd_toStartOf="@+id/textView_cal"
+                    app:layout_constraintTop_toTopOf="@+id/text_min"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:text="Calorie" />
+
+                <TextView
+                    android:id="@+id/foodCookingTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_min"
+                    app:layout_constraintEnd_toStartOf="@+id/text_min"
+                    app:layout_constraintTop_toTopOf="@+id/text_min"
+                    tools:text="Time" />
+
+                <TextView
+                    android:id="@+id/textView_cal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Kcal"
+                    app:layout_constraintBottom_toBottomOf="@+id/foodCalorieText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/foodCalorieText" />
+
+                <TextView
+                    android:id="@+id/foodCategoryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/foodNameText"
+                    tools:text="@string/food_category" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

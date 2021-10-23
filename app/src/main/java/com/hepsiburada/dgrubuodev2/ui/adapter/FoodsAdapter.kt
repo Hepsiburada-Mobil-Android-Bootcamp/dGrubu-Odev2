@@ -1,49 +1,47 @@
 package com.hepsiburada.dgrubuodev2.ui.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.hepsiburada.dgrubuodev2.data.model.Foods
-import com.hepsiburada.dgrubuodev2.databinding.FoodCardBinding
+import com.hepsiburada.dgrubuodev2.databinding.ItemFoodBinding
 
-class FoodsAdapter(var mContext: Context, var foodList:List<Foods>)
-    :RecyclerView.Adapter<FoodsAdapter.CardDesignHolder>() {
+class FoodsAdapter(
+    options: FirestoreRecyclerOptions<Foods>,
+) : FirestoreRecyclerAdapter<Foods, FoodsAdapter.FoodHolder>(options) {
 
+    class FoodHolder(val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    inner class CardDesignHolder(foodCardBinding: FoodCardBinding)
-        : RecyclerView.ViewHolder(foodCardBinding.root){
+        fun bind(
+            model: Foods
+        ) { binding.apply {
+            foodNameText.setText(model.foodName)
+            foodCalorieText.setText(model.foodCalory.toString())
+            foodCategoryText.setText(model.foodCategory)
+            foodCookingTimeText.setText(model.foodCookingTime.toString())
+        }
 
-        var design: FoodCardBinding
-
-        init{
-            this.design=foodCardBinding
+        }
+        companion object {
+            fun from(parent: ViewGroup): FoodHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemFoodBinding.inflate(layoutInflater,parent, false)
+                return FoodHolder(binding)
+            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardDesignHolder {
-        val layoutInflater= LayoutInflater.from(mContext)
-        val design=FoodCardBinding.inflate(layoutInflater,parent,false)
-        return CardDesignHolder(design)
+    fun deleteItem(position: Int) {
+        snapshots.getSnapshot(position).reference.delete()
     }
 
-    override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodHolder {
+        return FoodHolder.from(parent)
+    }
 
-        val food=foodList.get(position)
-        holder.design.foodObject=food
-
-/*
-        holder.design.textViewCardFoodPrice.text = food.yemek_fiyat.toString()+".00 \u20BA"
-
-        holder.design.foodCardview.setOnClickListener {
-            //var nameObject= food.yemek_adi
-            //var priceObject= food.yemek_fiyat.toString()
-            val pass=HomePageFragmentDirections.transitionHomePageToFoodDetailsPage(food)
-            Navigation.findNavController(it).navigate(pass)   */
-        }
-
-    override fun getItemCount(): Int {
-        return foodList.size
+    override fun onBindViewHolder(holder: FoodHolder, position: Int, model: Foods) {
+        holder.bind(model)
     }
 }
