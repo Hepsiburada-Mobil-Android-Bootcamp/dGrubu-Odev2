@@ -14,11 +14,9 @@ import com.hepsiburada.dgrubuodev2.data.model.Foods
 class EditFragmentViewModel:ViewModel() {
 
     private val firestore: FirebaseFirestore
-    private val storage: FirebaseStorage
 
     init {
         firestore=Firebase.firestore
-        storage= Firebase.storage
     }
 
     fun editRecipe(recipe: Foods, uuid: String?):Boolean?{
@@ -38,22 +36,6 @@ class EditFragmentViewModel:ViewModel() {
 
         }
         return success
-    }
-
-    fun uploadPicture(imgUri:Uri?,uuid:String?):String?{
-        var downloadUrl:String?=null
-        val reference=storage.reference
-        val imgReference=reference.child(uuid+".jpg")
-
-        imgUri?.let {
-            imgReference.putFile(imgUri).addOnSuccessListener {
-                imgReference.downloadUrl.addOnSuccessListener {
-                    downloadUrl=it.toString()
-                }
-
-            }
-        }
-        return downloadUrl
     }
 
 
