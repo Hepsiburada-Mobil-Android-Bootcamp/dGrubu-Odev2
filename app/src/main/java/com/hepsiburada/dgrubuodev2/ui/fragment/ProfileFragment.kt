@@ -148,7 +148,7 @@ class ProfileFragment : Fragment() {
             binding.etEmail.setText(it)
         })
         viewModel?.profileImage?.observe(viewLifecycleOwner, {
-            Picasso.get().load(viewModel!!.profileImage.toString()).into(binding.profileImage)
+           // Picasso.get().load(viewModel!!.profileImage.toString()).into(binding.profileImage)
         })
     }
 

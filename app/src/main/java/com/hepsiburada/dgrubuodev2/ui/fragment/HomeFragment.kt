@@ -13,21 +13,23 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.FragmentHomeBinding
+import com.hepsiburada.dgrubuodev2.databinding.FragmentProfileBinding
 import com.hepsiburada.dgrubuodev2.ui.adapter.FoodsAdapter
 
 class HomeFragment : Fragment() {
 
-    private  var adapter: FoodsAdapter? = null
+    private var adapter: FoodsAdapter? = null
     private var database = FirebaseFirestore.getInstance()
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding: FragmentHomeBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_home, container, false
-        )
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val query = database.collection("foods")
 
@@ -42,14 +44,26 @@ class HomeFragment : Fragment() {
             binding.recyclerview.layoutManager = LinearLayoutManager(context)
             binding.recyclerview.adapter = adapter
 
-
-        binding.floatingActionButton.setOnClickListener {
-            requireView().findNavController().navigate(R.id.action_homeFragment_to_addFoodFragment)
+            return binding.root
         }
-        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initClickListener()
     }
+
+    private fun initClickListener() {
+        binding.floatingActionButton.setOnClickListener {
+            requireView().findNavController()
+                .navigate(R.id.action_homeFragment_to_addFoodFragment)
+        }
+
+        binding.ivProfileIcon.setOnClickListener {
+            requireView().findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }
+    }
+
     override fun onStart() {
         super.onStart()
         adapter?.startListening()
