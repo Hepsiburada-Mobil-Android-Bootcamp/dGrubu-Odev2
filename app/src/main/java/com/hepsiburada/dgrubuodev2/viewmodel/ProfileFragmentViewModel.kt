@@ -1,8 +1,10 @@
 package com.hepsiburada.dgrubuodev2.viewmodel
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.ActionCodeUrl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -14,6 +16,7 @@ class ProfileFragmentViewModel : ViewModel() {
     var username = MutableLiveData<String>()
     var email = MutableLiveData<String>()
     var password = MutableLiveData<String>()
+    var profileImage = MutableLiveData<String>()
 
     var username1 = MutableLiveData<String>()
     var email1 = MutableLiveData<String>()
@@ -30,12 +33,15 @@ class ProfileFragmentViewModel : ViewModel() {
         user.let {
             username.postValue(user?.displayName.toString())
             email.postValue(user?.email.toString())
+            profileImage.postValue(user?.photoUrl.toString())
         }
     }
 
-    fun updateProfile() {
+    fun updateProfile(imgUrl:String) {
+        val url = Uri.parse(imgUrl)
         val profileUpdates = UserProfileChangeRequest.Builder()
             .setDisplayName(username1.value)
+            .setPhotoUri(url)
             .build()
 
         user!!.updateProfile(profileUpdates)
