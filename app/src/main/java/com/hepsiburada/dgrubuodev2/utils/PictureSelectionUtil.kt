@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -26,6 +27,7 @@ object PictureSelectionUtil {
     lateinit var permissionLauncher: ActivityResultLauncher<String>
     var selectedPicture: Uri?=null
     private val storage: FirebaseStorage=Firebase.storage
+    var downloadUrl:String?=null
 
 
     fun pictureSelection(view:View,fragment: Fragment){
@@ -79,19 +81,22 @@ object PictureSelectionUtil {
     }
 
 
-    fun uploadPicture(path:String,imgUri:Uri?,uuid:String?):String?{
-        var downloadUrl:String?=null
+    fun uploadPicture(path:String,imgUri:Uri?,fileName:String?):String?{
+
         val reference=storage.reference
-        val imgReference=reference.child(path).child(uuid+".jpg")
+        val imgReference=reference.child(path).child(fileName+".jpg")
 
         imgUri?.let {
-            imgReference.putFile(imgUri).addOnSuccessListener {
+            val storageReference= storage.reference.child(path).child(fileName+".jpg")
+            storageReference.putFile(imgUri).addOnSuccessListener {
                 imgReference.downloadUrl.addOnSuccessListener {
                     downloadUrl=it.toString()
+                    //Log.e("7777777777",downloadUrl!!)
                 }
-
             }
+
         }
+        Log.e("7777777777",downloadUrl!!)
         return downloadUrl
     }
 
