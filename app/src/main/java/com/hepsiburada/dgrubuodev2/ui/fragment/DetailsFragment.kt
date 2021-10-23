@@ -15,7 +15,6 @@ import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.FragmentDetailsBinding
 import com.hepsiburada.dgrubuodev2.viewmodel.DetailsFragmentViewModel
-import com.hepsiburada.dgrubuodev2.viewmodel.EditFragmentViewModel
 import com.squareup.picasso.Picasso
 
 class DetailsFragment : Fragment() {
