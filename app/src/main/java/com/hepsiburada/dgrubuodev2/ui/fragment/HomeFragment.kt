@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.databinding.FragmentHomeBinding
-import com.hepsiburada.dgrubuodev2.databinding.FragmentLoginBinding
 
 class HomeFragment : Fragment() {
 
