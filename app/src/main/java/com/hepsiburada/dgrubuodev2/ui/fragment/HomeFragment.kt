@@ -3,6 +3,7 @@ package com.hepsiburada.dgrubuodev2.ui.fragment
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,18 +20,21 @@ import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.FragmentHomeBinding
 import com.hepsiburada.dgrubuodev2.ui.adapter.FoodsAdapter
+import com.hepsiburada.dgrubuodev2.ui.adapter.HomeFragmentAdapter
 
 
 class HomeFragment : Fragment() {
 
     private var adapter: FoodsAdapter? = null
     private var database = FirebaseFirestore.getInstance()
-    //private var reference:CollectionReference = database.collection("foods")
+    private var reference:CollectionReference = database.collection("foods")
+    private var firebaseIdList: ArrayList<String> = ArrayList()
+    private val names: ArrayList<Foods> = ArrayList()
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    //var q:Query? = null
+    var q:Query? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,64 +43,67 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val query = database.collection("foods")
 
-        val options = FirestoreRecyclerOptions.Builder<Foods>()
-            .setQuery(query, Foods::class.java)
-            .build()
-
-        adapter = FoodsAdapter(options)
 
         binding.apply {
             binding.recyclerview.setHasFixedSize(true)
             binding.recyclerview.layoutManager = LinearLayoutManager(context)
             binding.recyclerview.adapter = adapter
 
+            q = database.collection("foods")
+            showAdapter(q!!)
+
             return binding.root
         }
+
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClickListener()
 
-        /*binding.etSearch.addTextChangedListener(object : TextWatcher {
+        binding.etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
                 if (charSequence.toString().length == 0) {
                     q = database.collection("foods")
+                    Log.d("7777777","ENTRANCE")
                     showAdapter(q!!)
                 } // This is used as if user erases the characters in the search field.
                 else {
-                    q = reference.orderBy("name")
+                    q = reference.orderBy("foodName")
                         .startAt(charSequence.toString().trim { it <= ' ' }).endAt(
                             charSequence.toString()
                                 .trim { it <= ' ' } + "\uf8ff") // name - the field for which you want to make search
+
                     showAdapter(q!!)
                 }
-                adapter!!.notifyDataSetChanged()
             }
 
             override fun afterTextChanged(editable: Editable) {}
-        })*/
+        })
     }
 
-    /*fun showAdapter(q1:Query){
+    fun showAdapter(q1:Query){
         q1.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
-            val names: MutableList<Foods> = ArrayList()
+
             if (task.isSuccessful) {
+
+                firebaseIdList.clear()
+                names.clear()
+
                 for (document in task.result) {
+                    firebaseIdList.add(document.id)
                     val model: Foods = document.toObject(Foods::class.java)
                     names.add(model)
                 }
-                val options1 = FirestoreRecyclerOptions.Builder<Foods>()
-                    .setQuery(q1, Foods::class.java)
-                    .build()
-                adapter = FoodsAdapter(options1)
 
+                binding.recyclerview.adapter = HomeFragmentAdapter(names,firebaseIdList)
             }
         })
-    }*/
+    }
 
     private fun initClickListener() {
         binding.floatingActionButton.setOnClickListener {
