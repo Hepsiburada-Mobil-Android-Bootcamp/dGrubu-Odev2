@@ -86,17 +86,18 @@
         android:id="@+id/starIconImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_staricon"
+        android:src="@drawable/ic_time"
         android:layout_marginStart="-10dp"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="@+id/foodNameTextView"
         app:layout_constraintTop_toBottomOf="@+id/foodNameTextView" />
 
     <TextView
-        android:id="@+id/scoreTextView"
+        android:id="@+id/timeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-8dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginStart="4dp"
         android:fontFamily="@font/sofiaprosemibold"
         android:text="@string/score"
         android:textSize="18sp"
@@ -139,7 +140,7 @@
         android:fontFamily="@font/sofiaprosemibold"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/foodNameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/scoreTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/timeTextView" />
 
 
     <TextView
@@ -218,9 +219,9 @@
         android:fontFamily="@font/sofiaprosemibold"
         android:text="Category:"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/scoreTextView"
-        app:layout_constraintStart_toEndOf="@+id/scoreTextView"
-        app:layout_constraintTop_toTopOf="@+id/scoreTextView" />
+        app:layout_constraintBottom_toBottomOf="@+id/timeTextView"
+        app:layout_constraintStart_toEndOf="@+id/timeTextView"
+        app:layout_constraintTop_toTopOf="@+id/timeTextView" />
 
     <TextView
         android:id="@+id/CategoryValueText"

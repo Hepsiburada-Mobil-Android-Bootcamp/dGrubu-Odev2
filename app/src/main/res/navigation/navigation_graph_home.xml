@@ -33,6 +33,9 @@
             android:name="uuid"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="food"
+            app:argType="com.hepsiburada.dgrubuodev2.data.model.Foods" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -53,6 +56,9 @@
             android:name="uuid"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="food"
+            app:argType="com.hepsiburada.dgrubuodev2.data.model.Foods" />
     </fragment>
     <fragment
         android:id="@+id/addFoodFragment"
