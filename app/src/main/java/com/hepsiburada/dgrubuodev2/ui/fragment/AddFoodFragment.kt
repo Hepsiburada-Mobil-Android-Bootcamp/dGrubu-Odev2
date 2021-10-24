@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
@@ -41,6 +42,11 @@ class AddFoodFragment : Fragment() {
         PictureSelectionUtil.setActivityResultLauncher(this@AddFoodFragment, binding.editFoodImageView)
         PictureSelectionUtil.setPermissionLauncher(this@AddFoodFragment)
 
+        val categories = resources.getStringArray(R.array.foodCategory)
+        val arrayAdapter = ArrayAdapter(requireContext(),R.layout.item_dropdown,categories)
+        binding.autoCompleteFoodCategories.setAdapter(arrayAdapter)
+
+
         viewModel = ViewModelProvider(this).get(AddFoodFragmentViewModel::class.java)
 
 
@@ -57,7 +63,7 @@ class AddFoodFragment : Fragment() {
             viewModel?.foodCalory?.value = text?.toString()?.toInt()
 
         }
-        binding.addfoodCategory.doOnTextChanged { text, start, before, count ->
+        binding.autoCompleteFoodCategories.doOnTextChanged { text, start, before, count ->
             viewModel?.foodCategory?.value = text?.toString()
 
         }
@@ -81,8 +87,8 @@ class AddFoodFragment : Fragment() {
                    ValidationUtil.validateTextField(binding.addfoodName)
                     hasError = true
                 }
-                binding.addfoodCategory.error.isNullOrEmpty() && viewModel?.foodCategory?.value.isNullOrEmpty() -> {
-                    ValidationUtil.validateTextField(binding.addfoodCategory)
+                binding.autoCompleteFoodCategories.error.isNullOrEmpty() && viewModel?.foodCategory?.value.isNullOrEmpty() -> {
+                    ValidationUtil.validateTextField(binding.autoCompleteFoodCategories)
                     hasError = true
                 }
                 binding.addfoodIngredients.error.isNullOrEmpty() && viewModel?.foodIngredients?.value.isNullOrEmpty() -> {
