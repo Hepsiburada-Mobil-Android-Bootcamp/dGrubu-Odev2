@@ -1,4 +1,13 @@
 <resources>
+    <string-array name="foodCategory">
+    <item>Soup</item>
+    <item>Appetizer</item>
+    <item>Salad</item>
+    <item>Desserts</item>
+    <item>Pastry</item>
+    <item>Main Meals</item>
+    </string-array>
+
     <string name="app_name">DGrubuOdev2</string>
     <string name="hello_blank_fragment">Blank Fragment</string>
     <string name="login_to_your_account">Login To Your Account</string>

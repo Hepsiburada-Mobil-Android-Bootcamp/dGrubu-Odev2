@@ -6,6 +6,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/tv_favorite_food_text"
         android:layout_width="wrap_content"
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_18"
         android:layout_marginEnd="@dimen/space_8"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/ic_search_bg"
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="@dimen/space_18"
@@ -41,11 +43,12 @@
         android:padding="@dimen/space_12"
         android:textColorHint="@color/orange_1"
         android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerview"
         app:layout_constraintEnd_toStartOf="@+id/ib_filter"
         app:layout_constraintStart_toStartOf="@+id/tv_favorite_food_text"
         app:layout_constraintTop_toBottomOf="@+id/tv_favorite_food_text" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/ib_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

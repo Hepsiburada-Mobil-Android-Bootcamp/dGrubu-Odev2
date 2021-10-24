@@ -35,8 +35,8 @@ class AddFoodFragmentViewModel: ViewModel() {
 
                 refUser?.add(foods)?.addOnCompleteListener { task ->
             when (task.isSuccessful) {
-                true ->  Log.d(ContentValues.TAG, "yemek ekleme:success")
-                false ->  Log.d(ContentValues.TAG, "yemek ekleme:false")
+                true ->  Log.d(ContentValues.TAG, "food added:success")
+                false ->  Log.d(ContentValues.TAG, "foood added:unsuccess")
             }
         }
     }
