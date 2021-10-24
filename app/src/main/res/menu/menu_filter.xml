@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
-        android:id="@+id/orderCookingTime"
-        android:title="Order by Cooking Time" />
+        android:id="@+id/allFoods"
+        android:title="@string/all_recipe" />
     <item
-        android:id="@+id/orderCalorie"
-        android:title="Order by Calorie" />
+        android:id="@+id/filterSoup"
+        android:title="@string/soup" />
+    <item
+        android:id="@+id/filterAppetizer"
+        android:title="@string/appetizer" />
+    <item
+        android:id="@+id/filterSalad"
+        android:title="@string/salad" />
+    <item
+        android:id="@+id/filterDesserts"
+        android:title="@string/desserts" />
+    <item
+    android:id="@+id/filterPastry"
+    android:title="@string/pastry" />
+    <item
+        android:id="@+id/filterMainMeals"
+        android:title="@string/main_meals" />
 </menu>

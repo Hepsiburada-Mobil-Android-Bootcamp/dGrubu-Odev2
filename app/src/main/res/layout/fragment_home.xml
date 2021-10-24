@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_person_"
         app:layout_constraintBottom_toBottomOf="@+id/tv_favorite_food_text"
-        app:layout_constraintEnd_toEndOf="@+id/ib_filter"
+        app:layout_constraintEnd_toEndOf="@+id/filter_button"
         app:layout_constraintStart_toEndOf="@+id/et_search"
         app:layout_constraintTop_toTopOf="@+id/tv_favorite_food_text" />
 
@@ -45,12 +45,12 @@
         android:textColorHint="@color/orange_1"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerview"
-        app:layout_constraintEnd_toStartOf="@+id/ib_filter"
+        app:layout_constraintEnd_toStartOf="@+id/filter_button"
         app:layout_constraintStart_toStartOf="@+id/tv_favorite_food_text"
         app:layout_constraintTop_toBottomOf="@+id/tv_favorite_food_text" />
 
     <ImageView
-        android:id="@+id/ib_filter"
+        android:id="@+id/filter_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/space_24"
