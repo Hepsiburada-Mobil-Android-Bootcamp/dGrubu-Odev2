@@ -93,13 +93,10 @@ object PictureSelectionUtil {
              storageReference.putFile(imgUri).addOnSuccessListener {
                      imgReference.downloadUrl.addOnSuccessListener {
                          downloadUrl = it.toString()
-                         //Log.e("7777777777",downloadUrl!!)
                      }
                  }
 
              }
-
-             Log.e("7777777777", downloadUrl!!)
          return@withContext downloadUrl
          }
 
