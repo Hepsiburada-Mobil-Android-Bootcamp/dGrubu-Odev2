@@ -23,12 +23,11 @@ import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.databinding.FragmentEditBinding
 import com.hepsiburada.dgrubuodev2.utils.PictureSelectionUtil
 import com.hepsiburada.dgrubuodev2.viewmodel.EditFragmentViewModel
+import kotlinx.coroutines.*
 
 class EditFragment : Fragment() {
 
     lateinit var binding:FragmentEditBinding
-    private lateinit var activityResultLauncher:ActivityResultLauncher<Intent>
-    private lateinit var permissionLauncher: ActivityResultLauncher<String>
     val uuid:String?=null
 
 
@@ -57,11 +56,18 @@ class EditFragment : Fragment() {
 
 
     fun saveOnClick(){
+
         PictureSelectionUtil.selectedPicture?.let {
-            val downloadUrl=PictureSelectionUtil.uploadPicture("foodImg",PictureSelectionUtil.selectedPicture,uuid)
-            downloadUrl?.let {
-                binding.apply {
-                    //editViewModel.editRecipe(Foods("id",editFoodNameTextField.text.toString(),editCategoryNameTextfield.text.toString(),editCalorieTextField.text.toString().toInt(),editIngredientsTextField.text.toString(),editDirectionsTextField.text.toString(),downloadUrl),uuid)
+            CoroutineScope(Dispatchers.IO).async {
+                val downloadUrl = PictureSelectionUtil.uploadPicture(
+                    "foodImg",
+                    PictureSelectionUtil.selectedPicture,
+                    uuid
+                )
+                downloadUrl?.let {
+                    binding.apply {
+                        //editViewModel.editRecipe(Foods("id",editFoodNameTextField.text.toString(),editCategoryNameTextfield.text.toString(),editCalorieTextField.text.toString().toInt(),editIngredientsTextField.text.toString(),editDirectionsTextField.text.toString(),downloadUrl),uuid)
+                    }
                 }
             }
         }

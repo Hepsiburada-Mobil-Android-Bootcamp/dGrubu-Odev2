@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -20,12 +21,14 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
+import kotlinx.coroutines.*
 
 object PictureSelectionUtil {
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     lateinit var permissionLauncher: ActivityResultLauncher<String>
     var selectedPicture: Uri?=null
     private val storage: FirebaseStorage=Firebase.storage
+    var downloadUrl:String?=null
 
 
     fun pictureSelection(view:View,fragment: Fragment){
@@ -79,21 +82,23 @@ object PictureSelectionUtil {
     }
 
 
-    fun uploadPicture(path:String,imgUri:Uri?,uuid:String?):String?{
-        var downloadUrl:String?=null
+     suspend fun uploadPicture(path:String,imgUri:Uri?,fileName:String?):String?= withContext(Dispatchers.IO){
+
         val reference=storage.reference
-        val imgReference=reference.child(path).child(uuid+".jpg")
+        val imgReference=reference.child(path).child(fileName+".jpg")
 
-        imgUri?.let {
-            imgReference.putFile(imgUri).addOnSuccessListener {
-                imgReference.downloadUrl.addOnSuccessListener {
-                    downloadUrl=it.toString()
-                }
+         imgUri?.let {
 
-            }
-        }
-        return downloadUrl
-    }
+             val storageReference = storage.reference.child(path).child(fileName + ".jpg")
+             storageReference.putFile(imgUri).addOnSuccessListener {
+                     imgReference.downloadUrl.addOnSuccessListener {
+                         downloadUrl = it.toString()
+                     }
+                 }
+
+             }
+         return@withContext downloadUrl
+         }
 
 
 

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,6 +18,7 @@ import com.hepsiburada.dgrubuodev2.utils.PictureSelectionUtil
 import com.hepsiburada.dgrubuodev2.utils.ValidationUtil
 import com.hepsiburada.dgrubuodev2.viewmodel.ProfileFragmentViewModel
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.*
 
 class ProfileFragment : Fragment() {
 
@@ -51,15 +53,22 @@ class ProfileFragment : Fragment() {
     private fun initClickListener() {
         binding.btnUpdate.setOnClickListener {
             if (!isError()) {
-                PictureSelectionUtil.selectedPicture?.let {
-                    downloadUrl = PictureSelectionUtil.uploadPicture(
-                        "profileImg",
-                        PictureSelectionUtil.selectedPicture,
-                        uuid
-                    ).toString()
+
+                CoroutineScope(Dispatchers.IO).async {
+
+                    PictureSelectionUtil.selectedPicture?.let {
+                        downloadUrl = PictureSelectionUtil.uploadPicture(
+                            "profileImg",
+                            PictureSelectionUtil.selectedPicture,
+                            binding.etName.text.toString()
+                        )
+                    }
+
+                    downloadUrl?.let { url -> viewModel?.updateProfile(url) }
                 }
-                downloadUrl?.let { url -> viewModel?.updateProfile(url) }
             }
+
+
         }
 
         binding.tvLogout.setOnClickListener {
@@ -139,7 +148,7 @@ class ProfileFragment : Fragment() {
             binding.etEmail.setText(it)
         })
         viewModel?.profileImage?.observe(viewLifecycleOwner, {
-            Picasso.get().load(viewModel!!.profileImage.toString()).into(binding.profileImage)
+           // Picasso.get().load(viewModel!!.profileImage.toString()).into(binding.profileImage)
         })
     }
 
