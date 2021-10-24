@@ -26,11 +26,11 @@ class AddFoodFragmentViewModel: ViewModel() {
         auth= FirebaseAuth.getInstance()
     }
 
-    fun saveFood(foodName: String, foodCategory:String, foodCalory: Int, foodIngredients: String, foodRecipe: String, foodCookingTime: Int) {
+    fun saveFood(foodName: String, foodCategory:String, foodCalory: Int, foodIngredients: String, foodRecipe: String, foodCookingTime: Int,foodImg:String) {
         val user : FirebaseUser? = auth?.currentUser
         val userID: String = user?.uid.toString()
 
-        val foods = Foods("1",foodName ,foodCategory, foodCalory, foodIngredients,foodRecipe, foodCookingTime,"")
+        val foods = Foods("1",foodName ,foodCategory, foodCalory, foodIngredients,foodRecipe, foodCookingTime,foodImg)
         val refUser = firestore?.collection("foods")
 
                 refUser?.add(foods)?.addOnCompleteListener { task ->
