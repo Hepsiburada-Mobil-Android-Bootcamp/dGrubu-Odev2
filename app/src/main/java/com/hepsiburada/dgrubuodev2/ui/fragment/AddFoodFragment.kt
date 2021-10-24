@@ -113,6 +113,7 @@ class AddFoodFragment : Fragment() {
                                             foodCookingTime = viewModel?.foodCookingTime?.value ?: 0,
                                             foodImg = downloadUrl!!
                                         )
+
                                     }
                                 }
 

@@ -4,10 +4,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.ItemFoodBinding
+import com.hepsiburada.dgrubuodev2.ui.fragment.EditFragmentDirections
+import com.hepsiburada.dgrubuodev2.ui.fragment.HomeFragmentDirections
 import com.squareup.picasso.Picasso
 
 class HomeFragmentAdapter(val foodList:ArrayList<Foods>,val firebaseIdList:ArrayList<String>):RecyclerView.Adapter<HomeFragmentAdapter.FoodHolder>() {
@@ -34,7 +39,7 @@ class HomeFragmentAdapter(val foodList:ArrayList<Foods>,val firebaseIdList:Array
         }
 
         holder.itemView.setOnClickListener{
-
+            it.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(firebaseIdList[position],foodList[position]))
         }
 
     }

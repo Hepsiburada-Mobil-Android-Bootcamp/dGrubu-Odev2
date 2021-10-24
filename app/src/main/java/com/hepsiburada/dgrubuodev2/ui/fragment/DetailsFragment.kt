@@ -2,6 +2,7 @@ package com.hepsiburada.dgrubuodev2.ui.fragment
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.hepsiburada.dgrubuodev2.R
 import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.FragmentDetailsBinding
@@ -20,7 +24,7 @@ class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
     val detailsViewModel: DetailsFragmentViewModel by viewModels()
     var uuid: String? = null
-    lateinit var currentFood: Foods
+    var currentFood:Foods?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +40,8 @@ class DetailsFragment : Fragment() {
 
         arguments?.let {
             uuid = DetailsFragmentArgs.fromBundle(it).uuid
-            currentFood = detailsViewModel.getRecipe(uuid)!!
-            setViews(currentFood)
+            currentFood=DetailsFragmentArgs.fromBundle(it).food
+            setViews(currentFood!!)
         }
 
     }
@@ -46,9 +50,11 @@ class DetailsFragment : Fragment() {
     private fun setViews(currentFood: Foods) {
         binding.apply {
             foodNameTextView.text = currentFood.foodName
+            timeTextView.text=currentFood.foodCookingTime.toString()
             kcalValueTextView.text = currentFood.foodCalory.toString()
             ingredientsDetailsTextView.text = currentFood.foodIngredients
             directionsDetailsTextView.text = currentFood.foodRecipe
+            CategoryValueText.text=currentFood.foodCategory
         }
         Picasso.get().load(currentFood.foodImg).into(binding.foodImageView)
     }
@@ -64,8 +70,7 @@ class DetailsFragment : Fragment() {
     }
 
     fun editOnClick() {
-        val action = DetailsFragmentDirections.actionDetailsFragmentToEditFragment(uuid)
-        Navigation.findNavController(requireView()).navigate(action)
+        findNavController().navigate(DetailsFragmentDirections.actionDetailsFragmentToEditFragment(uuid,currentFood!!))
     }
 
 
@@ -75,6 +80,8 @@ class DetailsFragment : Fragment() {
             builder.apply {
                 setPositiveButton("Continue", { dialog, id ->
                     detailsViewModel.deleteRecipe(uuid)
+                    val action = DetailsFragmentDirections.actionDetailsFragmentToHomeFragment()
+                    Navigation.findNavController(requireView()).navigate(action)
                 })
                 setNegativeButton("Cancel", { dialog, id ->
                     // User cancelled the dialog

@@ -18,17 +18,25 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import com.hepsiburada.dgrubuodev2.R
+import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.FragmentEditBinding
 import com.hepsiburada.dgrubuodev2.utils.PictureSelectionUtil
 import com.hepsiburada.dgrubuodev2.viewmodel.EditFragmentViewModel
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.*
 
 class EditFragment : Fragment() {
 
     lateinit var binding:FragmentEditBinding
-    val uuid:String?=null
+    var uuid:String?=null
+    var currentFood:Foods?=null
+    private val storage: FirebaseStorage = Firebase.storage
 
 
     val editViewModel: EditFragmentViewModel by viewModels()
@@ -38,8 +46,9 @@ class EditFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding.editFragment=this
+
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_edit, container, false)
+        binding.editFragment=this
         return binding.root
     }
 
@@ -50,32 +59,46 @@ class EditFragment : Fragment() {
         PictureSelectionUtil.setPermissionLauncher(this@EditFragment)
 
         arguments?.let {
-            //uuid=DetailsFragmentArgs.fromBundle(it).foodId
+            uuid = DetailsFragmentArgs.fromBundle(it).uuid
+            currentFood=DetailsFragmentArgs.fromBundle(it).food
+            setViews(currentFood!!)
         }
+    }
+
+    private fun setViews(currentFood: Foods) {
+        binding.apply {
+            editFoodNameTextField.setText(currentFood.foodName)
+            editCookingTimeField.setText(currentFood.foodCookingTime.toString())
+            editCategoryTextField.setText(currentFood.foodCategory)
+            editIngredientsTextField.setText(currentFood.foodIngredients)
+            editDirectionsTextField.setText(currentFood.foodRecipe)
+            editKcalTextField.setText(currentFood.foodCalory.toString())
+        }
+        Picasso.get().load(currentFood.foodImg).into(binding.editFoodImageView)
     }
 
 
     fun saveOnClick(){
 
         PictureSelectionUtil.selectedPicture?.let {
-            CoroutineScope(Dispatchers.IO).async {
-                val downloadUrl = PictureSelectionUtil.uploadPicture(
-                    "foodImg",
-                    PictureSelectionUtil.selectedPicture,
-                    uuid
-                )
-                downloadUrl?.let {
+            val imgReference=storage.reference.child("foodImg").child(binding.editFoodNameTextField.text.toString()+".jpg")
+            imgReference.putFile(it).addOnSuccessListener {
+                imgReference.downloadUrl.addOnSuccessListener {
+                    val downloadUrl = it.toString()
                     binding.apply {
-                        //editViewModel.editRecipe(Foods("id",editFoodNameTextField.text.toString(),editCategoryNameTextfield.text.toString(),editCalorieTextField.text.toString().toInt(),editIngredientsTextField.text.toString(),editDirectionsTextField.text.toString(),downloadUrl),uuid)
+                            currentFood= Foods("id",editFoodNameTextField.text.toString(),editCategoryTextField.text.toString(),editKcalTextField.text.toString().toInt(),editIngredientsTextField.text.toString(),editDirectionsTextField.text.toString(),editCookingTimeField.text.toString().toInt(),downloadUrl)
+                            editViewModel.editRecipe(currentFood!!,uuid)
                     }
                 }
             }
+
         }
+        findNavController().navigate(EditFragmentDirections.actionEditFragmentToDetailsFragment(uuid,currentFood!!))
 
     }
 
     fun backNavOnClick(){
-        val action=EditFragmentDirections.actionEditFragmentToDetailsFragment(uuid)
+        val action=EditFragmentDirections.actionEditFragmentToDetailsFragment(uuid,currentFood!!)
         Navigation.findNavController(requireView()).navigate(action)
     }
 

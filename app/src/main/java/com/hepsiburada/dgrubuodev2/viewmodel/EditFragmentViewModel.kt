@@ -19,23 +19,20 @@ class EditFragmentViewModel:ViewModel() {
         firestore=Firebase.firestore
     }
 
-    fun editRecipe(recipe: Foods, uuid: String?):Boolean?{
+    fun editRecipe(recipe: Foods, uuid: String?){
 
-        var success:Boolean?=null
 
         uuid?.let {
 
             firestore.collection("foods").document(uuid)
                 .set(recipe)
                 .addOnSuccessListener { result ->
-                    success=true
                 }
                 .addOnFailureListener { exception ->
-                    success=false
                 }
 
         }
-        return success
+
     }
 
 
