@@ -8,8 +8,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.hepsiburada.dgrubuodev2.data.model.Foods
 import com.hepsiburada.dgrubuodev2.databinding.ItemFoodBinding
 
-class FoodsAdapter(
-    options: FirestoreRecyclerOptions<Foods>,
+class FoodsAdapter(options: FirestoreRecyclerOptions<Foods>,
 ) : FirestoreRecyclerAdapter<Foods, FoodsAdapter.FoodHolder>(options) {
 
     class FoodHolder(val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root) {
